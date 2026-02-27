@@ -1,5 +1,9 @@
 # Changelog
 
+## Xcode 26.3 (17C529)
+
+No changes to `tools/list` compared to RC 2 (17C528).
+
 ## Xcode 26.3 RC 2 (17C528)
 
 **Changed tools:** `GetTestList`, `RunAllTests`, `RunSomeTests`
