@@ -17,6 +17,6 @@ Then invoke `tools/list` and save the response JSON.
 Each Xcode version gets a directory named `xcode-{version}-{release-type}-{build}`:
 
 ```
-xcode-26.3-rc-17C519/
+xcode-26.4-rc-17E192/
 └── tools-list.json    # Raw tools/list response
 ```
