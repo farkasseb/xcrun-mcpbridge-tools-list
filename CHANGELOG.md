@@ -1,5 +1,9 @@
 # Changelog
 
+## Xcode 26.4.1 (17E202)
+
+No changes to `tools/list` compared to 26.4 RC (17E192).
+
 ## Xcode 26.4 RC (17E192)
 
 **Changed tools:** `ExecuteSnippet`, `RunAllTests`, `RunSomeTests`, `XcodeGrep`, `XcodeRead`, `XcodeUpdate`, `XcodeWrite`
