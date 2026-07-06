@@ -1,5 +1,62 @@
 # Changelog
 
+## Xcode 26.5 (17F42)
+
+**Added tools:** `XcodeGetCurrentFile`
+
+**Changed tools:** `BuildProject`, `ExecuteSnippet`, `RenderPreview`, `RunAllTests`, `RunSomeTests`, `XcodeGlob`, `XcodeGrep`, `XcodeLS`, `XcodeMV`, `XcodeRead`
+
+The tool count goes from 20 to 21.
+
+### New tool: `XcodeGetCurrentFile`
+
+Gets information about the currently active file in the Xcode editor — file path, content, and selection. Content is returned in `cat -n` format with line numbers, up to 600 lines by default with optional `offset`/`limit` for large files.
+
+- **Input:** required `tabIdentifier`; optional `includeContent`, `includeSelection`, `offset`, `limit`
+- **Output:** required `isEditable`; optional `filePath`, `content`, `totalLines`, `linesRead`, `startLine`, and a `selection` object with `text`, `lineRange`, `characterRange`
+
+### `RenderPreview`
+
+**Input:**
+- New optional field `previewVariantOverrides` — a dictionary mapping variant group names to variant names, using keys/values returned in `supportedPreviewVariantOverrides` by a previous invocation with the same active scheme and run destination
+
+**Output:**
+- New optional field `supportedPreviewVariantOverrides` — the supported preview variant overrides, usable as `previewVariantOverrides` in subsequent invocations
+- `error` (single object) replaced by `errors` — an array of the same `{message}` objects; the description now also mentions input validation failures
+
+### `BuildProject`
+
+- New **required** output field `fullLogPath` — path of the full log in textual format, containing the complete command lines and any output from the build tasks. Breaking change for strict decoders.
+
+### `RunAllTests` & `RunSomeTests`
+
+Both tools received the same change:
+
+- Required `errors` field in result items renamed to `errorMessages` — breaking change for strict decoders
+
+### `XcodeGrep`, `XcodeGlob` & `XcodeLS`
+
+All three received a new optional output field:
+
+- `packageDependencies` — names of package dependencies whose files are included in results (for `XcodeLS`: items that are package dependencies rather than regular project directories)
+
+`XcodeLS` also gained a new optional output field `message` — *"Optional message about the operation"*.
+
+### `XcodeRead`
+
+- New optional output field `message` — *"Optional message about the operation"*
+
+### `XcodeMV`
+
+- Input field `operation` changed from a string enum (`"move"` / `"copy"`) to an object with a required `rawValue` string property; the `enum` values remain in the schema. Looks like a Swift `RawRepresentable` encoding change — clients sending plain strings may break if the schema is enforced.
+
+### `ExecuteSnippet`
+
+Description-only schema changes, but one documents a behavior change:
+
+- `timeout` default is now documented as **600 seconds** (previously 120)
+- `codeSnippet` and `error` wording changed from "executed" to "run"; the `error` description now notes it can be a compile-time or runtime error
+
 ## Xcode 26.4.1 (17E202)
 
 No changes to `tools/list` compared to 26.4 RC (17E192).
