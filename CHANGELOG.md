@@ -1,5 +1,21 @@
 # Changelog
 
+## Xcode 26.6 (17F113)
+
+**Renamed tools:** `ExecuteSnippet` → `RunCodeSnippet`
+
+**Changed tools:** `DocumentationSearch`
+
+The tool count remains at 21.
+
+### `ExecuteSnippet` → `RunCodeSnippet`
+
+Only `name` and `title` changed — the input and output schemas are byte-identical. Breaking for clients calling the tool by its old name.
+
+### `DocumentationSearch`
+
+- New **required** field `kind` (*"The kind of document"*) in the result `documents` items — breaking change for strict decoders
+
 ## Xcode 26.5 (17F42)
 
 **Added tools:** `XcodeGetCurrentFile`
