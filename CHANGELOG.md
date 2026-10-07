@@ -1,5 +1,9 @@
 # Changelog
 
+## Xcode 27.1 RC (27A9275)
+
+No changes to `tools/list` compared to 27.0 RC (27A266a).
+
 ## Xcode 27.0 RC (27A266a)
 
 **Added tools:** `AddEntitlement`, `AddInfoPlist`, `DeviceInteractionEndSession`, `DeviceInteractionInstallAndRun`, `DeviceInteractionStartSession`, `DeviceInteractionStartWorkspaceSession`, `DeviceInteractionSynthesize`, `GetConsoleOutput`, `GetCrashIssueLogs`, `GetFieldPerformanceIssueLogs`, `GetFileCompilerFlags`, `GetTargetBuildSettings`, `GetTopCrashIssues`, `GetTopFieldPerformanceIssues`, `InvokeDebuggerCommand`, `LocalizationPlanner`, `RunProject`, `StopProject`, `StringCatalogContext`, `StringCatalogEdit`, `StringCatalogRead`, `UpdateFileCompilerFlags`, `UpdateTargetBuildSetting`, `XcodeCloseWorkspace`, `XcodeListRunDestinations`, `XcodeListSchemes`, `XcodeListTargets`, `XcodeListTemplates`, `XcodeListTestPlans`, `XcodeListWorkspaces`, `XcodeNewProject`, `XcodeNewTarget`, `XcodeOpenWorkspace`, `XcodeSwitchRunDestination`, `XcodeSwitchScheme`, `XcodeSwitchTestPlan`
