@@ -1,5 +1,38 @@
 # Changelog
 
+## Xcode 27.2 RC (27B48)
+
+**Changed tools:** `AddInfoPlist`, `InvokeDebuggerCommand`, `RenderPreview`, `XcodeMakeDir`
+
+The tool count remains at 54. Compared against 27.1 RC (27A9275); the 27.2 betas were not tracked.
+
+### `RenderPreview`
+
+**Input:**
+- New optional field `displayMode` — `"static"` (the default) or `"interactive"`, from `supportedOverrides.displayModes` of a previous invocation
+- New optional field `snapshotDelay` — seconds to let an interactive preview run before the snapshot; must be at least 0 and less than `timeout`
+- New optional field `preferredRenderDestination` — an object with optional `identifier`, `platformName`, `deviceModelName`, `systemVersion`; the first available destination matching every set field is used, and an unmatched request falls back to the automatic destination with a message in `errors`
+- `previewLocalizationOverride` now carries the warning not to run parallel invocations when it is set (moved from the old `supportedLocalizations` output field)
+
+**Output** (breaking for strict decoders):
+- `previewSnapshotPath` replaced by a `snapshot` object with a required `path`
+- `supportedCanvasControlOverrides`, `supportedLocalizations` and `supportedPreviewVariantOverrides` folded into one `supportedOverrides` object as `canvasControls`, `localizations` and `previewVariants`, plus new `displayModes` and `renderDestinations`
+- `canvasControls.groupItems` items change from integers to `{index, title?}` objects
+- `renderedDestination` gains an `identifier`, now **required**, to pass back as `preferredRenderDestination.identifier`
+- `errors` is now **required**
+
+### `AddInfoPlist`
+
+- New `infoPlistValueType` enum value `dictionary` for a single dictionary; `infoPlistDictionaryItems` takes a JSON-encoded dictionary for it and a JSON-encoded array of dictionaries for `dictionaryArray` as before. The descriptions now suggest `dictionary` for App Transport Security settings.
+
+### `XcodeMakeDir`
+
+- New optional input `directoryKind` — `folder` (the default) creates a file system synchronized (buildable) folder, `group` creates a classic Xcode group backed by a directory; falls back to whatever the parent supports. The tool used to create *"directories and groups"*.
+
+### `InvokeDebuggerCommand`
+
+Description only: prefer `p` or `v` over `po` or `expression` because they skip unnecessary expression evaluation; keep `po` and `expression` for calling functions, casting and arithmetic. The examples swap `po` and `frame variable` for `p` and `v`.
+
 ## Xcode 27.1 RC (27A9275)
 
 No changes to `tools/list` compared to 27.0 RC (27A266a).
