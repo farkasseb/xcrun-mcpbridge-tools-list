@@ -1,5 +1,9 @@
 # Changelog
 
+## Xcode 27.2 (27B52)
+
+No changes to `tools/list` compared to RC (27B48).
+
 ## Xcode 27.2 RC (27B48)
 
 **Changed tools:** `AddInfoPlist`, `InvokeDebuggerCommand`, `RenderPreview`, `XcodeMakeDir`
